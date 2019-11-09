@@ -6,18 +6,15 @@
     2-1. App 컴포넌트로 부터 받은 genres를 반복하여 드롭다운을 완성 해주세요.
     2-2. 드롭다운은 selectedGenreId data와 양방향바인딩(v-model)이 됩니다.
     2-3. 값 변경이 되면, 특정한 함수를 실행 해야합니다.-->
-    <select class="form-control" id="selectedGenreId" v-model='selectedGenre'>
-      <option v-for='genre in genres' :key='genre.id'>
+    <select class="form-control" v-model='selectedGenreId'>
+      <option value=0>전체보기</option>
+      <option v-for='genre in genres' :value="genre.id" :key="genre.id">
         {{genre.name}}
-        
         </option>
     </select>
     <!-- Movie List Item -->
       <div class="row mt-5">
-    <!-- (나중에 마지막으로) selectedGenreId 값에 따른 분기를 해야 합니다.-->
-        <!-- {{ selectedMovies }}  -->
-        <MovieListItem v-if="selectedMovies===''" :movie="movie" v-for="movie in movies" :key="movie.id" />
-        <MovieListItem v-else :movie="selectedmovie" v-for="selectedmovie in selectedMovies" :key="movie.pk" /> 
+        <MovieListItem :movie="movie" v-for="movie in selectedMovies" :key="movie.id" />
       </div>
   </div>
 </template>
@@ -35,8 +32,7 @@ export default {
   data() {
     return {
       // 활용할 데이터를 정의하시오.
-      selectedMovies: '',
-      selectedGenre: '',
+      selectedGenreId: 0,
     };
   },
 
@@ -58,17 +54,24 @@ export default {
   // 드랍다운에서 장르를 선택하면, 해당 영화들만 보여주도록 구현 예정입니다.
   // 주의할 것은 직접 부모 컴포넌트의 데이터를 변경할 수 없다는 점입니다.
   // 완료 후
-  watch:{
-    selectedGenre(event){
-      const genreID = this.genres.filter(function (object){
-        return object.name === event
-      })[0].id
-      this.selectedMovies = this.movies.filter(function (object){
-        return object.genre_id === genreID
-      })
+  // watch:{
+  //   selectedGenre(event){
+  //     const genreID = this.genres.filter(function (object){
+  //       return object.name === event
+  //     })[0].id
+  //     this.selectedMovies = this.movies.filter(function (object){
+  //       return object.genre_id === genreID
+  //     })
+  //   }
+  // },
+  computed: {
+    selectedMovies () {
+      if (this.selectedGenreId > 0) {
+        return this.movies.filter((movies) => { return movies.genre_id === this.selectedGenreId })
+      }
+      return this.movies
     }
-  },
-
+  }
 
 };
 </script>
