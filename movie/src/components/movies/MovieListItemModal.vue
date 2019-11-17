@@ -27,7 +27,7 @@
 </template>
 
 <script>
-console.log('MovieListItemModal - loaded')
+
 export default {
   name: 'movie-list-item-modal',
   // 0. props 데이터를 받이 위하여 설정하시오.

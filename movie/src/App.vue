@@ -28,7 +28,7 @@ export default {
   },
 
   mounted() {
-    console.log('Hi, The app is running')
+
     const MOVIESURL = "https://gist.githubusercontent.com/edu-john/9b7645f841e402ce7fab2b8b606b7c7e/raw/271285772e7dfbb9b476eb27e1b85ead683d763c/movies.json"
     const GENRESURL = "https://gist.githubusercontent.com/djohnkang/7cc43f82b5165779819e3b6ad299965b/raw/b0b5850b55806672cde4666e544b6840548159a2/genres.json"
     // 0. mounted 되었을 때, 

@@ -8,12 +8,11 @@
     <button class="btn btn-primary" data-toggle="modal" :data-target="movieid" >영화 정보 상세보기</button>
     <!-- 1-3. 호출하시오.필요한 경우 props를 데이터를 보내줍니다.-->
     <MovieListItemModal :movie='movie' /> 
-    <!-- :modal='modal' -->
   </div>
 </template>
 
 <script>
-console.log('MovieListItem - loaded')
+
 // 1-1. 저장되어 있는 MovieListItemModal 컴포넌트를 불러오고,
 import MovieListItemModal from "./MovieListItemModal";
 export default {
@@ -38,11 +37,6 @@ export default {
       movieid: `#movie-${this.movie.id}`,
     }
   },
-  // methods:{
-  //   showModal() {
-  //     this.modal = true
-  //   }
-  // }
 };
 </script>
 

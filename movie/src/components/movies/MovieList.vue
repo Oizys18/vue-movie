@@ -20,7 +20,7 @@
 </template>
 
 <script>
-console.log('MovieList - loaded')
+
 // 1-1. 저장되어 있는 MovieListItem 컴포넌트를 불러오고,
 import MovieListItem from "./MovieListItem";
 export default {
